@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- Soft Drop Shadow Aura (CoreSVG compatible) -->
+    <radialGradient id="dropShadow" cx="50%" cy="52%" r="48%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.65" />
+      <stop offset="76%" stop-color="#000000" stop-opacity="0.45" />
+      <stop offset="90%" stop-color="#000000" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Main Squircle Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#192542" />
+      <stop offset="45%" stop-color="#0d1426" />
+      <stop offset="100%" stop-color="#060913" />
+    </linearGradient>
+
+    <!-- Ambient Top Glow -->
+    <radialGradient id="topGlow" cx="50%" cy="14%" r="65%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.48" />
+      <stop offset="55%" stop-color="#6366f1" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Ambient Bottom-Right Accent Glow -->
+    <radialGradient id="bottomGlow" cx="82%" cy="84%" r="55%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Center Emblem Aura -->
+    <radialGradient id="centerAura" cx="50%" cy="56%" r="34%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.26" />
+      <stop offset="55%" stop-color="#6366f1" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Squircle Rim Border Gradient -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bfdbfe" stop-opacity="0.65" />
+      <stop offset="30%" stop-color="#60a5fa" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#1e293b" stop-opacity="0.5" />
+    </linearGradient>
+
+    <!-- Inner Glass Window Gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#0b1120" stop-opacity="0.96" />
+    </linearGradient>
+
+    <!-- Inner Card Border -->
+    <linearGradient id="cardBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32" />
+      <stop offset="50%" stop-color="#60a5fa" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.1" />
+    </linearGradient>
+
+    <!-- Prompt Chevron Gradient -->
+    <linearGradient id="chevronGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd" />
+      <stop offset="45%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+
+    <!-- Lightning Runner Bolt Gradient -->
+    <linearGradient id="boltGrad" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#f0f9ff" />
+      <stop offset="28%" stop-color="#60a5fa" />
+      <stop offset="68%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <!-- Transform Lines Gradients -->
+    <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+
+    <linearGradient id="lineGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.45" />
+    </linearGradient>
+
+    <linearGradient id="lineGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+  </defs>
+
+  <!-- Native Soft Drop Shadow -->
+  <ellipse cx="512" cy="542" rx="442" ry="442" fill="url(#dropShadow)" />
+
+  <!-- macOS Squircle Base (824x824 centered at 100,100) -->
+  <rect
+    x="100"
+    y="100"
+    width="824"
+    height="824"
+    rx="186"
+    ry="186"
+    fill="url(#bgGrad)" />
+
+  <!-- Ambient Glow Layers -->
+  <rect
+    x="100"
+    y="100"
+    width="824"
+    height="824"
+    rx="186"
+    ry="186"
+    fill="url(#topGlow)" />
+
+  <rect
+    x="100"
+    y="100"
+    width="824"
+    height="824"
+    rx="186"
+    ry="186"
+    fill="url(#bottomGlow)" />
+
+  <!-- Subtle Background Rings -->
+  <circle cx="512" cy="512" r="324" fill="none" stroke="#60a5fa" stroke-opacity="0.07" stroke-width="2.5" />
+  <circle cx="512" cy="512" r="244" fill="none" stroke="#60a5fa" stroke-opacity="0.09" stroke-width="2.5" />
+
+  <!-- Inner Card Drop Shadow -->
+  <rect
+    x="176"
+    y="244"
+    width="672"
+    height="564"
+    rx="90"
+    ry="90"
+    fill="#000000"
+    fill-opacity="0.42" />
+
+  <!-- Inner Spotlight Command Palette Card -->
+  <rect
+    x="176"
+    y="228"
+    width="672"
+    height="564"
+    rx="90"
+    ry="90"
+    fill="url(#cardGrad)"
+    stroke="url(#cardBorder)"
+    stroke-width="4.5" />
+
+  <!-- Soft Center Glow Inside Card -->
+  <circle cx="512" cy="566" r="260" fill="url(#centerAura)" />
+
+  <!-- Top Search Bar Divider inside Card -->
+  <line
+    x1="178"
+    y1="354"
+    x2="846"
+    y2="354"
+    stroke="#ffffff"
+    stroke-opacity="0.11"
+    stroke-width="3" />
+
+  <!-- Search Bar Elements -->
+  <circle cx="246" cy="292" r="15" fill="#38bdf8" />
+  <rect x="284" y="280" width="236" height="24" rx="12" fill="#94a3b8" fill-opacity="0.32" />
+  <rect x="692" y="274" width="102" height="36" rx="18" fill="#3b82f6" fill-opacity="0.25" stroke="#60a5fa" stroke-opacity="0.5" stroke-width="2.5" />
+
+  <!-- Left Prompt Chevron (>) -->
+  <path
+    d="M 248 474 L 354 568 L 248 662"
+    fill="none"
+    stroke="url(#chevronGrad)"
+    stroke-width="46"
+    stroke-linecap="round"
+    stroke-linejoin="round" />
+
+  <!-- Center Electric Lightning Bolt (Instant Runner) -->
+  <path
+    d="M 548 408 L 424 574 L 522 574 L 476 728 L 634 544 L 534 544 Z"
+    fill="url(#boltGrad)" />
+
+  <!-- Right Transformed Text Bars (3 balanced rows) -->
+  <rect x="654" y="468" width="132" height="28" rx="14" fill="url(#lineGrad1)" />
+  <rect x="654" y="554" width="96" height="28" rx="14" fill="url(#lineGrad2)" />
+  <rect x="654" y="640" width="132" height="28" rx="14" fill="url(#lineGrad3)" />
+
+  <!-- Outer Squircle Specular Rim Highlight -->
+  <rect
+    x="102"
+    y="102"
+    width="820"
+    height="820"
+    rx="184"
+    ry="184"
+    fill="none"
+    stroke="url(#rimGrad)"
+    stroke-width="4" />
+</svg>

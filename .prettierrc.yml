@@ -1,0 +1,4 @@
+# semi: true            # default
+# singleQuote: false    # default
+bracketSameLine: true
+trailingComma: "none"

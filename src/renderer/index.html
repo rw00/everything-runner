@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Everything Runner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="spotlight-shell">
+      <!-- Top Search Bar -->
+      <header class="search-header">
+        <div class="search-icon">
+          <img src="icon.svg" alt="" class="search-app-icon" />
+        </div>
+        <input
+          id="tool-search"
+          type="text"
+          class="search-input"
+          placeholder="Search tools (e.g. Sort Text, Count Words, Base64)..."
+          autocomplete="off"
+          spellcheck="false" />
+        <div class="header-badges">
+          <button
+            id="accessibility-btn"
+            class="badge badge-warning hidden"
+            title="Grant Accessibility permission to automatically grab selected text and replace results directly in the active app">
+            ⚡ Enable Auto-Grab &amp; Replace
+          </button>
+          <button
+            id="toggle-input-btn"
+            class="badge badge-source"
+            title="Click to inspect or edit input text">
+            <span id="source-label">Selection</span>
+            <span class="caret">▾</span>
+          </button>
+          <button
+            id="toggle-settings-btn"
+            class="badge badge-settings"
+            title="Configure custom scripts directory (⌘,)">
+            <span>⚙ Settings</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Collapsible Settings Drawer -->
+      <section id="settings-drawer" class="settings-drawer hidden">
+        <div class="drawer-header">
+          <span>Custom Scripts Directory</span>
+          <span id="settings-meta" class="drawer-meta">
+            Load user scripts (.js)
+          </span>
+        </div>
+        <div class="settings-row">
+          <input
+            id="custom-scripts-dir-input"
+            type="text"
+            class="settings-input"
+            placeholder="e.g. ~/runner-custom-scripts"
+            autocomplete="off"
+            spellcheck="false" />
+          <button id="browse-scripts-dir-btn" type="button" class="action-btn">
+            Browse…
+          </button>
+          <button
+            id="save-settings-btn"
+            type="button"
+            class="action-btn action-btn-primary">
+            Save &amp; Reload
+          </button>
+          <button
+            id="open-settings-file-btn"
+            type="button"
+            class="action-btn"
+            title="Open settings.json in default editor">
+            Edit JSON
+          </button>
+        </div>
+      </section>
+
+      <!-- Collapsible Input Text Drawer -->
+      <section id="input-drawer" class="input-drawer hidden">
+        <div class="drawer-header">
+          <span>Input Text (Selection / Clipboard)</span>
+          <span id="input-summary" class="drawer-meta">0 chars</span>
+        </div>
+        <textarea
+          id="input-textarea"
+          class="input-textarea"
+          rows="3"
+          placeholder="Select text in any app before pressing ⌘⌥⇧Space, or type/paste text here..."
+          spellcheck="false"></textarea>
+      </section>
+
+      <!-- Main Content Split: Tool List + Live Result & Params -->
+      <main class="main-split">
+        <aside class="tool-list-pane">
+          <div class="pane-label">Tools</div>
+          <ul id="tool-list" class="tool-list"></ul>
+        </aside>
+
+        <section class="preview-pane">
+          <!-- Parameters Section (shown if tool has paramsSchema) -->
+          <div id="params-container" class="params-container hidden">
+            <div class="pane-header-row">
+              <span class="pane-label">Parameters</span>
+              <span class="pane-hint">Press <kbd>Tab</kbd> to edit</span>
+            </div>
+            <div id="params-fields" class="params-fields"></div>
+          </div>
+
+          <!-- Live Result Preview Section -->
+          <div class="result-container">
+            <div class="pane-header-row">
+              <span id="preview-title" class="pane-label">Live Preview</span>
+              <span id="preview-badge" class="preview-meta"></span>
+            </div>
+            <div id="preview-body" class="preview-body"></div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Bottom Keyboard Shortcut Bar -->
+      <footer class="footer-bar">
+        <div class="brand-pill">
+          <span class="dot"></span>
+          <span>Everything Runner</span>
+          <kbd class="shortcut-hint">⌘⌥⇧Space</kbd>
+        </div>
+        <div class="actions-row">
+          <button id="btn-replace" class="action-btn action-btn-primary">
+            <kbd id="replace-kbd">↵</kbd>
+            <span id="replace-label">Replace in App</span>
+          </button>
+          <button id="btn-copy" class="action-btn">
+            <kbd id="copy-kbd">⌥↵</kbd>
+            <span id="copy-label">Copy Only</span>
+          </button>
+          <span class="action-hint"><kbd>⇥</kbd> Params</span>
+          <span class="action-hint"><kbd>⌘,</kbd> Settings</span>
+          <span class="action-hint"><kbd>esc</kbd> Dismiss</span>
+        </div>
+      </footer>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

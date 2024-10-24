@@ -1,0 +1,77 @@
+name: Release macOS App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build & Release macOS App
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Run tests
+        run: npm test
+
+      - name: Package macOS application
+        run: npm run package:mac
+
+      - name: Build macOS DMG disk image
+        run: |
+          DMG_STAGING="$(mktemp -d)"
+          /usr/bin/ditto "release/Everything Runner.app" "$DMG_STAGING/Everything Runner.app"
+          ln -s /Applications "$DMG_STAGING/Applications"
+          /usr/bin/hdiutil create \
+            -volname "Everything Runner" \
+            -srcfolder "$DMG_STAGING" \
+            -ov \
+            -format UDZO \
+            "release/Everything-Runner-macOS.dmg"
+          rm -rf "$DMG_STAGING"
+
+      - name: Compute release tag and title
+        id: meta
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          BASE_TAG="v${VERSION}"
+          if git rev-parse "$BASE_TAG" >/dev/null 2>&1; then
+            TAG="${BASE_TAG}.${GITHUB_RUN_NUMBER}"
+          else
+            TAG="$BASE_TAG"
+          fi
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: Everything Runner ${{ steps.meta.outputs.tag }}
+          target_commitish: ${{ github.sha }}
+          generate_release_notes: true
+          make_latest: "true"
+          files: |
+            release/Everything-Runner-macOS.dmg
+            release/Everything-Runner-macOS.zip
